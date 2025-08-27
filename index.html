@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="이 홈페이지는 포켓몬 api를 활용한 포켓몬 도감 홈페이지 입니다."
+    />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/font.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Pokedex</h1>
+    </header>
+
+    <main>
+      <h2 class="sr-only">포켓몬 도감</h2>
+      <form id="search-form">
+        <label for="search-pokemon" class="sr-only"
+          >포켓몬 번호 또는 이름을 입력하세요.</label
+        >
+        <input
+          type="text"
+          id="search-pokemon"
+          placeholder="예) 25 or 피카츄"
+          required
+        />
+        <button type="submit" id="search-btn">검색</button>
+      </form>
+
+      <ul id="pokemon-card"></ul>
+    </main>
+
+    <footer>
+      <h3 class="sr-only">저작권 정보</h3>
+      <dl>
+        <dt class="sr-only">CopyRight</dt>
+        <dd>Copyright © 2025 Pokedex. All Rights Reserved.</dd>
+        <dt class="sr-only">API 출처</dt>
+        <dd>
+          API 출처:
+          <a href="https://pokeapi.co" target="_blank" rel="noopener"
+            >PokéAPI</a
+          >
+        </dd>
+        <dt class="sr-only">제작자</dt>
+        <dd>이상민</dd>
+      </dl>
+    </footer>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

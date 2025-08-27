@@ -1,0 +1,145 @@
+/* variables */
+:root {
+  --primary-color: #f9dc41;
+  --secdary-color: #a4cf8d;
+  --back-color: #7bbbd5;
+  --primary-font: "Cafe24PROUP", sans-serif;
+  --primary-font-size: clamp(2.4rem, 3vw, 4.8rem);
+  --title-font-size: clamp(4rem, 5vw, 8.4rem);
+  --desc-font-size: clamp(1.4rem, 2vw, 2.4rem);
+}
+
+/* global */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0 auto;
+  font-family: var(--primary-font);
+  font-size: var(--primary-font-size);
+  background: var(--back-color);
+}
+a {
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
+}
+button {
+  border: none;
+  border-radius: 1.2rem;
+  background: var(--primary-color);
+  font-family: var(--primary-font);
+  font-size: var(--primary-font-size);
+  padding: clamp(1rem, 2vw, 4rem);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+input {
+  width: clamp(20rem, 50vw, 128rem);
+  border-radius: 1.2rem;
+  font-family: var(--primary-font);
+  font-size: var(--primary-font-size);
+  padding: clamp(1rem, 2vw, 4rem);
+  text-align: center;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* layout */
+
+/* header */
+header {
+  margin-top: clamp(5rem, 10vw, 25.6rem);
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  padding: clamp(5rem, 5vw, 10rem);
+  font-size: var(--title-font-size);
+  font-weight: 700;
+}
+
+/* main */
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5rem, 5vw, 10rem);
+  gap: clamp(10rem, 15vw, 30rem);
+}
+#pokemon-card {
+  display: none;
+  background: var(--secdary-color);
+  padding: clamp(2rem, 3vw, 6rem);
+  border-radius: 2rem;
+}
+#pokemon-card.show {
+  display: block;
+}
+#pokemon-card li {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#pokemon-card h2 {
+  font-size: var(--title-font-size);
+}
+
+#pokemon-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* footer */
+footer {
+  padding: clamp(1rem, 5vw, 10rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--desc-font-size);
+  color: gray;
+}
+dl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+dd {
+  display: flex;
+  gap: 1rem;
+}
+/* 미니얼럿 */
+.mini-alert {
+  background: red;
+  position: fixed;
+  padding: 16px 20px;
+  border-radius: 8px;
+  z-index: 10000;
+  width: clamp(43rem, 52vw, 100rem);
+  text-align: center;
+  line-height: 5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
