@@ -5,22 +5,10 @@ const searchInput = document.getElementById("search-pokemon");
 const searchBtn = document.getElementById("search-btn");
 const pokemonCard = document.querySelector("#pokemon-card");
 
-const cache = new Map(); // 메모리 캐시
-let currentController = null;
-
 // 이벤트
-searchBtn.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-
   searchPokemon();
-});
-searchInput.addEventListener("keydown", (e) => {
-  if (e.code === "Enter") {
-    //폼 제출 방지
-    e.preventDefault();
-
-    searchPokemon();
-  }
 });
 
 async function searchPokemon() {
