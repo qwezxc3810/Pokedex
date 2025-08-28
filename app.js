@@ -9,7 +9,11 @@ const cache = new Map(); // 메모리 캐시
 let currentController = null;
 
 // 이벤트
-searchBtn.addEventListener("click", searchPokemon);
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  searchPokemon();
+});
 searchInput.addEventListener("keydown", (e) => {
   if (e.code === "Enter") {
     //폼 제출 방지
