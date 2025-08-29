@@ -10,7 +10,8 @@
 ---
 
 ## 📸 미리보기
-![pokedex-demo](./screenshot.png)
+![포켓몬 도감 메인 화면](./images/page1.png)
+
 
 ---
 
