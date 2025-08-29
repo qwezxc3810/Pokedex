@@ -26,9 +26,9 @@
       <button id="menu-btn">☰</button>
       <nav id="header-menu">
         <ul>
-          <li>언어 선택</li>
-          <li>나만의 도감</li>
-          <li>포켓몬 전투</li>
+          <li data-moidal="mydex">나만의 도감</li>
+          <li data-moidal="battle">포켓몬 전투</li>
+          <li><button id="lang-btn">언어 선택</button></li>
         </ul>
       </nav>
     </header>
@@ -68,6 +68,16 @@
         <dd>이상민</dd>
       </dl>
     </footer>
+
+    <!-- 모달 -->
+    <dialog id="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modal-body"></div>
+      </div>
+    </dialog>
+
+    <!-- 자바스크립트 -->
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>

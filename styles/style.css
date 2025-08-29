@@ -103,6 +103,10 @@ h1 {
   right: 0;
 }
 
+#lang-btn {
+  background: var(--secdary-color);
+}
+
 /* main */
 main {
   width: 100%;
@@ -215,4 +219,26 @@ dd {
 }
 #loading-backdrop.show {
   display: block;
+}
+
+/* 모달 */
+.modal {
+  display: none; /* 숨김 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secdary-color) rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--primary-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 90%;
 }
