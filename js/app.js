@@ -14,7 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // 결과 카드 요소
   const loadingBackdrop = document.getElementById("loading-backdrop");
   // 로딩 중 백드롭
+  const menuBtn = document.getElementById("menu-btn");
+  // 헤더 햄버거 메뉴
+  const headerMenu = document.getElementById("header-menu");
 
+  // 메뉴 버튼 이벤트
+  menuBtn.addEventListener("click", () => {
+    headerMenu.classList.toggle("active");
+    // 메뉴 활성화
+    document.body.classList.toggle("no-scroll"); 
+    // 스크롤 방지
+  });
+
+  // 헤더 메뉴
   async function searchPokemon() {
     // 포켓몬 검색 비동기
     const pokemonName = searchInput.value.trim().toLowerCase();
@@ -69,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!data.data?.pokemon || !data.data.pokemon.sprites?.front_default) {
         MiniAlert.fire({
           title: "Not Found",
-          message: "존재하지 않는 포켓몬입니다. 이름을 다시 확인해 주세요.",
+          message: "존재하지 않는 포켓몬입니다. 이름 또는 ID를 다시 확인해 주세요.",
         });
         pokemonCard.classList.remove("show"); // 기존 카드 숨김
         return;
