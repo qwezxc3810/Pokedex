@@ -7,6 +7,10 @@
       name="description"
       content="이 홈페이지는 포켓몬 api를 활용한 포켓몬 도감 홈페이지 입니다."
     />
+    <meta
+      name="keywords"
+      content="포켓몬, 포켓몬 도감, 피카츄, 파이리, 꼬부기, Pokedex, Pokemon, JavaScript, GraphQL"
+    />
     <title>Pokedex</title>
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/font.css" />
@@ -14,25 +18,36 @@
   </head>
   <body>
     <header>
+      <!-- 로고 -->
       <h1>Pokedex</h1>
+
+      <!-- 언어선택, 포켓몬 추가 메뉴 기능 
+       (추가할 기능: 추가한 포켓몬 끼리 상성 비교, ) -->
+      <nav class="header-nav">
+        <ul>
+          <li>언어 선택</li>
+          <li>나만의 도감</li>
+        </ul>
+      </nav>
     </header>
 
     <main>
       <h2 class="sr-only">포켓몬 도감</h2>
+      <!-- 포켓몬 이름 또는 아이디 검색 -->
       <form id="search-form">
         <label for="search-pokemon" class="sr-only"
           >포켓몬 번호 또는 이름을 입력하세요.</label
         >
-        <input
-          type="text"
-          id="search-pokemon"
-          placeholder="예) 25 or 피카츄"
-          required
-        />
+        <input type="text" id="search-pokemon" placeholder="예) 25 or 피카츄" />
+
         <button type="submit" id="search-btn">검색</button>
       </form>
 
-      <ul id="pokemon-card"></ul>
+      <!-- 포켓몬 결과 카드 -->
+      <div id="pokemon-card"></div>
+
+      <!-- 로딩중 백드롭 흐리게 -->
+      <div id="loading-backdrop"></div>
     </main>
 
     <footer>
