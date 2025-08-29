@@ -49,13 +49,13 @@
 ## 🚀 설치 및 실행 방법 (Installation)
 
 ```bash
-* 저장소 클론
+# 저장소 클론
 git clone https://github.com/qwezxc3810/Pokedex.git
 
-* 디렉토리 이동
+# 디렉토리 이동
 cd Pokedex
 
-* index.html을 브라우저에서 실행
+# index.html을 브라우저에서 실행
 ```
 
 ## 🔮 향후 개선 사항 (Future Work)
