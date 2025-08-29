@@ -6,7 +6,7 @@
 
 🔗 **배포 주소:** [Pokedex 바로가기](https://qwezxc3810.github.io/Pokedex/)  
 🔗 **GitHub Repo:** [Repository 링크](https://github.com/qwezxc3810/Pokedex)
-
+🔗 **API 주소:** [PokeAPI 바로가기](https://pokeapi.co/)  
 ---
 
 ## 📸 미리보기
