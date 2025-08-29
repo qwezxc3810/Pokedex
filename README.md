@@ -5,7 +5,9 @@
 사용자 친화적인 UI로 검색 및 상세 조회가 가능합니다.  
 
 🔗 **배포 주소:** [Pokedex 바로가기](https://qwezxc3810.github.io/Pokedex/)  
+
 🔗 **GitHub Repo:** [Repository 링크](https://github.com/qwezxc3810/Pokedex)
+
 🔗 **API 주소:** [PokeAPI 바로가기](https://pokeapi.co/)  
 ---
 
