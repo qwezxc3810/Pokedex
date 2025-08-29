@@ -10,11 +10,11 @@
 ---
 
 ## 📸 미리보기
-![포켓몬 도감 메인 화면](./images/page1.png)
-![포켓몬 도감 메뉴 화면](./images/page2.png)
-![포켓몬 도감 포켓몬 검색 화면](./images/page3.png)
-![포켓몬 도감 공란 검색 시 오류 화면](./images/page4.png)
-![포켓몬 도감 존재하지 않는 ID 또는 이름 입력 시 오류 화면](./images/page5.png)
+![포켓몬 도감 메인 화면](./Images/page1.png)
+![포켓몬 도감 메뉴 화면](./Images/page2.png)
+![포켓몬 도감 포켓몬 검색 화면](./Images/page3.png)
+![포켓몬 도감 공란 검색 시 오류 화면](./iImages/page4.png)
+![포켓몬 도감 존재하지 않는 ID 또는 이름 입력 시 오류 화면](./Images/page5.png)
 ---
 
 ## 💡 프로젝트 소개
