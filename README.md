@@ -13,7 +13,7 @@
 ![포켓몬 도감 메인 화면](./Images/page1.png)
 ![포켓몬 도감 메뉴 화면](./Images/page2.png)
 ![포켓몬 도감 포켓몬 검색 화면](./Images/page3.png)
-![포켓몬 도감 공란 검색 시 오류 화면](./iImages/page4.png)
+![포켓몬 도감 공란 검색 시 오류 화면](./Images/page4.png)
 ![포켓몬 도감 존재하지 않는 ID 또는 이름 입력 시 오류 화면](./Images/page5.png)
 ---
 
