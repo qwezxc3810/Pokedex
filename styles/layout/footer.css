@@ -1,0 +1,11 @@
+/* footer.css */
+footer {
+  margin-top: 5rem;
+  padding: clamp(1rem, 5vw, 10rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--desc-font-size);
+  color: gray;
+}

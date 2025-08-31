@@ -1,0 +1,59 @@
+/* header.css */
+header {
+  margin-top: clamp(5rem, 10vw, 25.6rem);
+  padding: clamp(5rem, 5vw, 10rem);
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  padding: clamp(5rem, 5vw, 10rem);
+  font-size: var(--title-font-size);
+  font-weight: 700;
+}
+
+#menu-btn {
+  width: clamp(5rem, 7vw, 10rem);
+  height: clamp(5rem, 7vw, 10rem);
+  border-radius: 50%;
+  background-image: url(../../assets/Images/pokemonball.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: none;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#menu-btn:hover {
+  animation: spin 1s linear infinite;
+}
+
+#header-menu {
+  position: fixed;
+  top: 0;
+  right: -1000rem;
+  width: clamp(25rem, 52vw, 100rem);
+  height: 100%;
+  background: var(--primary-color);
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+#header-menu ul {
+  font-size: var(--menu-font-size);
+  padding: clamp(5rem, 10vw, 25.6rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5rem, 5vw, 10rem);
+}
+
+#header-menu.active {
+  right: 0;
+}
