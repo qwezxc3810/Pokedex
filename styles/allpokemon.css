@@ -1,0 +1,16 @@
+.pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.pokemon-card {
+  background: var(--secdary-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+}

@@ -14,20 +14,18 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/font.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
   </head>
   <body>
     <header>
-      <!-- 로고 -->
       <h1>Pokedex</h1>
-
-      <!-- 언어선택, 포켓몬 추가 메뉴 기능 
-       (추가할 기능: 추가한 포켓몬 끼리 상성, 능력치 비교, ) -->
-      <button id="menu-btn">☰</button>
+      <button id="menu-btn"></button>
       <nav id="header-menu">
         <ul>
-          <li data-moidal="mydex">나만의 도감</li>
-          <li data-moidal="battle">포켓몬 전투</li>
+          <li id="all-pokemon" data-modal="all-pokemon">전체 포켓몬</li>
+          <li data-modal="mydex">나만의 도감</li>
+          <li data-modal="battle">포켓몬 전투</li>
           <li><button id="lang-btn">언어 선택</button></li>
         </ul>
       </nav>
@@ -35,20 +33,15 @@
 
     <main>
       <h2 class="sr-only">포켓몬 도감</h2>
-      <!-- 포켓몬 이름 또는 아이디 검색 -->
       <form id="search-form">
-        <label for="search-pokemon" class="sr-only"
-          >포켓몬 번호 또는 이름을 입력하세요.</label
-        >
+        <label for="search-pokemon" class="sr-only">
+          포켓몬 번호 또는 이름을 입력하세요.
+        </label>
         <input type="text" id="search-pokemon" placeholder="예) 25 or 피카츄" />
-
         <button type="submit" id="search-btn">검색</button>
       </form>
 
-      <!-- 포켓몬 결과 카드 -->
       <div id="pokemon-card"></div>
-
-      <!-- 로딩중 백드롭 흐리게 -->
       <div id="loading-backdrop"></div>
     </main>
 
@@ -69,15 +62,30 @@
       </dl>
     </footer>
 
-    <!-- 모달 -->
-    <dialog id="modal">
-      <div class="modal-content">
+    <!-- 모달: 전체 포켓몬 -->
+    <dialog id="modal-allpokemon">
+      <div class="all-pokemon-content">
         <span class="close">&times;</span>
-        <div id="modal-body"></div>
+        <div id="all-pokemon-card" class="pokemon-list"></div>
       </div>
     </dialog>
 
-    <!-- 자바스크립트 -->
+    <!-- 모달: 상세 포켓몬 -->
+    <dialog id="modal-detail">
+      <div class="detail-content">
+        <span class="closedetail">&times;</span>
+        <div id="pokemon-detail"></div>
+      </div>
+    </dialog>
+
+    <!-- 모달: 나만의 도감 -->
+    <dialog id="modal-mydex">
+      <div class="mydex-content">
+        <span class="closemydex">&times;</span>
+        <div id="pokemon-mydex"></div>
+      </div>
+    </dialog>
+
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>

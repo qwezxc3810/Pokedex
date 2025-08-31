@@ -1,0 +1,184 @@
+/* 미니얼럿 */
+.mini-alert-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999; /* dialog보다 높게 */
+  pointer-events: auto; /* 클릭 가능 */
+}
+
+.mini-alert {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  z-index: 100000; /* 최상위 */
+  position: relative;
+}
+
+/* 전체 포켓몬 모달 */
+#modal-allpokemon {
+  width: 100vw;
+  margin: auto;
+  border: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 1.2rem;
+  padding: clamp(2rem, 5vw, 5rem);
+  background-color: var(--secdary-color);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.all-pokemon-content {
+  background: var(--primary-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* 전체 포켓몬 카드 그리드 */
+.pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 4rem;
+}
+
+/* 포켓몬 카드 스타일 */
+.pokemon-card {
+  background: var(--back-color);
+  border-radius: 1.4rem;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* 상세보기 모달 */
+#modal-detail {
+  width: 100vw;
+  height: 80vw;
+  padding: 2rem;
+  border: none;
+  border-radius: 1.2rem;
+  background: url(../Images/allpokemon-back.png);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+/* 상세보기 활성화 시 */
+#modal-detail[open] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 상세보기 내부 콘텐츠 */
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+#pokemon-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.detail-content img {
+  width: 35%;
+  height: 35%;
+  margin: auto;
+}
+
+/* 닫기 버튼 */
+
+.close {
+  position: fixed;
+  top: 3%;
+  right: 6%;
+  font-size: clamp(5rem, 5vw, 10rem);
+  cursor: pointer;
+}
+
+.closedetail {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: clamp(5rem, 5vw, 10rem);
+  cursor: pointer;
+}
+
+.closemydex {
+  position: fixed;
+  top: 11%;
+  left: 12%;
+  font-size: clamp(5rem, 5vw, 10rem);
+  cursor: pointer;
+}
+
+/* 전체 모달 흐림 효과 */
+#modal-allpokemon.blur {
+  filter: blur(3px);
+  pointer-events: none; /* 흐려진 동안 클릭 방지 */
+}
+
+/* 나만의 도감 */
+
+#modal-mydex {
+  width: 80vw;
+  height: 80vh;
+  background: url(../Images/allpokemon-back.png);
+  padding: clamp(2rem, 5vw, 5rem);
+  text-align: center;
+}
+
+.mydex-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pokemon-mydex {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 5rem;
+}
+
+.dex-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 1.4rem;
+}
+.dex-card img {
+  width: 30rem;
+  height: auto;
+}
+.remove {
+  background: none;
+  box-shadow: none;
+}
