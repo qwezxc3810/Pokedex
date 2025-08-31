@@ -86,47 +86,53 @@ document.addEventListener("DOMContentLoaded", () => {
     loadingBackdrop.classList.add("show");
 
     try {
-      const res = await fetch(
-        "https://graphql-pokeapi.vercel.app/api/graphql",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            query: `
-          query getPokemon($name: String!) {
-            pokemon(name: $name) {
-              id
-              name
-              height
-              weight
-              sprites { front_default }
-              types { type { name } }
-            }
-          }`,
-            variables: { name },
-          }),
-        }
+      // 영어 → ID 조회 후 species에서 한국어 이름 불러오기
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      if (!res.ok) throw new Error("포켓몬 없음");
+      const pokemon = await res.json();
+
+      // species에서 한국어 이름 가져오기
+      const speciesRes = await fetch(pokemon.species.url);
+      const species = await speciesRes.json();
+      const koreanName =
+        species.names.find((n) => n.language.name === "ko")?.name ||
+        pokemon.name;
+      pokemon.koreanName = koreanName;
+
+      // 타입 한국어 변환
+      const types = await Promise.all(
+        pokemon.types.map(async (t) => {
+          const typeRes = await fetch(t.type.url);
+          const typeData = await typeRes.json();
+          const ko = typeData.names.find((n) => n.language.name === "ko");
+          return ko ? ko.name : t.type.name;
+        })
       );
+      pokemon.koreanTypes = types;
 
-      const data = await res.json();
-      if (!data.data?.pokemon) {
-        MiniAlert.fire({
-          title: "Not Found",
-          message: "포켓몬이 존재하지 않습니다.",
-        });
-        pokemonCard.classList.remove("show");
-        return;
-      }
+      // 능력치 한국어 변환
+      const stats = await Promise.all(
+        pokemon.stats.map(async (s) => {
+          const statRes = await fetch(s.stat.url);
+          const statData = await statRes.json();
+          const ko = statData.names.find((n) => n.language.name === "ko");
+          return {
+            name: ko ? ko.name : s.stat.name,
+            value: s.base_stat,
+          };
+        })
+      );
+      pokemon.koreanStats = stats;
 
-      const pokemon = data.data.pokemon;
       pokemonCard.innerHTML = renderPokemon(pokemon);
       pokemonCard.classList.add("show");
     } catch (err) {
       console.error(err);
       MiniAlert.fire({
-        title: "Error",
-        message: "데이터를 가져오는데 실패했습니다.",
+        title: "Not Found",
+        message: "포켓몬이 존재하지 않습니다.",
       });
+      pokemonCard.classList.remove("show");
     } finally {
       searchBtn.disabled = false;
       searchBtn.textContent = "검색";
@@ -142,30 +148,65 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderPokemon(pokemon) {
     return `
       <div class="pokemon">
-        <h2>${pokemon.name} (#${pokemon.id})</h2>
-        <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-        <p>Height: ${pokemon.height}</p>
-        <p>Weight: ${pokemon.weight}</p>
-        <p>Type: ${pokemon.types.map((t) => t.type.name).join(", ")}</p>
+        <h2>${pokemon.koreanName} (#${pokemon.id})</h2>
+        <img src="${pokemon.sprites.front_default}" alt="${
+      pokemon.koreanName
+    }" />
+        <p>키: ${pokemon.height / 10} m</p>
+        <p>몸무게: ${pokemon.weight / 10} kg</p>
+        <p>타입: ${pokemon.koreanTypes.join(", ")}</p>
+        <p>능력치:</p>
+        <ul>
+          ${pokemon.koreanStats
+            .map((s) => `<li>${s.name}: ${s.value}</li>`)
+            .join("")}
+        </ul>
         <button class="heart-btn" 
           data-id="${pokemon.id}" 
-          data-name="${pokemon.name}" 
+          data-name="${pokemon.koreanName}" 
           data-image="${pokemon.sprites.front_default}">
         </button>
       </div>
     `;
   }
 
-  function showPokemonDetail(pokemon) {
+  async function showPokemonDetail(pokemon) {
+    // 타입 한국어 변환
+    const types = await Promise.all(
+      pokemon.types.map(async (t) => {
+        const typeRes = await fetch(t.type.url);
+        const typeData = await typeRes.json();
+        const ko = typeData.names.find((n) => n.language.name === "ko");
+        return ko ? ko.name : t.type.name;
+      })
+    );
+
+    // 능력치 한국어 변환
+    const stats = await Promise.all(
+      pokemon.stats.map(async (s) => {
+        const statRes = await fetch(s.stat.url);
+        const statData = await statRes.json();
+        const ko = statData.names.find((n) => n.language.name === "ko");
+        return {
+          name: ko ? ko.name : s.stat.name,
+          value: s.base_stat,
+        };
+      })
+    );
+
     pokemonDetailContainer.innerHTML = `
-      <h2>${pokemon.name} (#${pokemon.id})</h2>
-      <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
-      <p>Type: ${pokemon.types.map((t) => t.type.name).join(", ")}</p>
-      <p>Height: ${pokemon.height}</p>
-      <p>Weight: ${pokemon.weight}</p>
+      <h2>${pokemon.koreanName || pokemon.name} (#${pokemon.id})</h2>
+      <img src="${pokemon.sprites.front_default}" alt="${pokemon.koreanName}" />
+      <p>타입: ${types.join(", ")}</p>
+      <p>키: ${pokemon.height / 10} m</p>
+      <p>몸무게: ${pokemon.weight / 10} kg</p>
+      <p>능력치:</p>
+      <ul>
+        ${stats.map((s) => `<li>${s.name}: ${s.value}</li>`).join("")}
+      </ul>
       <button class="heart-btn" 
         data-id="${pokemon.id}" 
-        data-name="${pokemon.name}" 
+        data-name="${pokemon.koreanName}" 
         data-image="${pokemon.sprites.front_default}">
         ❤️ 마이덱스 추가
       </button>

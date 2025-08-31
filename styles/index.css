@@ -242,7 +242,6 @@ dd {
   z-index: 100000;
 }
 
-
 .heart-btn {
   position: absolute;
   top: 100%;
@@ -257,10 +256,6 @@ dd {
 
 .heart-btn:hover {
   animation: shake 1.5s ease-in-out 3;
-}
-
-.heart-btn:active {
-  animation: pop 1s ease-out;
 }
 
 /* 키프레임 */
@@ -281,18 +276,6 @@ dd {
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes pop {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-350px) scale(2);
-  }
-  100% {
-    transform: translateY(0) scale(1);
   }
 }
 
