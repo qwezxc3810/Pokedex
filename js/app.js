@@ -136,12 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${pokemon.sprites.front_default}" alt="${
       pokemon.koreanName
     }" />
-
+    
         <p>키: ${pokemon.height / 10} m</p>
         <p>몸무게: ${pokemon.weight / 10} kg</p>
         <p>타입: ${pokemon.koreanTypes.join(", ")}</p>
         <p>능력치:</p>
-    
+        
         <ul>
           ${pokemon.koreanStats
             .map((s) => `<li>${s.name}: ${s.value}</li>`)
