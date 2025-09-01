@@ -77,7 +77,7 @@ function createPokemonCard(detail) {
   card.innerHTML = `
     <h3>${detail.koreanName} (#${detail.id})</h3>
     <img src="${detail.sprites.front_default}" alt="${detail.koreanName}">
-    <p><b>타입:</b> ${detail.koreanTypes.join(", ")}</p>
+    <p><br>타입:</br> ${detail.koreanTypes.join(", ")}</p>
   `;
   // 클릭 시 상세 모달 열기
   card.addEventListener("click", () => showPokemonDetail(detail));
