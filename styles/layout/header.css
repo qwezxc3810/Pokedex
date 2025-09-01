@@ -12,6 +12,10 @@ h1 {
   font-weight: 700;
 }
 
+.header-slider-menu li {
+  cursor: pointer;
+}
+
 #menu-btn {
   width: clamp(5rem, 7vw, 10rem);
   height: clamp(5rem, 7vw, 10rem);

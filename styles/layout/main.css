@@ -43,11 +43,11 @@ main {
   box-shadow: none;
 }
 
-.heart-btn:hover {
-  animation: shake 1.5s ease-in-out 3;
+.heart-btn.catching {
+  animation: shake 1s ease-in-out 3;
 }
 
-@keyframes shake-more {
+@keyframes shake {
   0% {
     transform: translateX(0) rotate(0deg);
   }

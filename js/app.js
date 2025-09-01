@@ -77,17 +77,35 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (e) => {
     // ❤️ 마이덱스 추가 버튼 클릭
     if (e.target.classList.contains("heart-btn")) {
+      const btn = e.target;
       const pokemon = {
-        id: e.target.dataset.id,
-        name: e.target.dataset.name,
-        image: e.target.dataset.image,
+        id: btn.dataset.id,
+        name: btn.dataset.name,
+        image: btn.dataset.image,
       };
-      addToMyDex(pokemon);
-      renderMyDex(); // 마이덱스 갱신
+
+      // 1. "포켓몬 잡는 중..." → 3초 후 자동 닫힘
       MiniAlert.fire({
-        title: "저장 완료!",
-        message: `${pokemon.name}이(가) 마이덱스에 추가되었습니다! ❤️`,
+        title: "플레이어가 몬스터볼을 사용했다!",
+        message: `${pokemon.name}을(를) 잡고 있습니다... `,
+        duration: 3000, // ⏱ 자동 닫힘
+        closeBackdrop: false, // (원하면 백드롭 클릭 방지)
       });
+
+      // 2. 몬스터볼 흔들림 애니메이션 시작
+      btn.classList.add("catching");
+
+      // 3. 3초 후 잡기 성공 처리
+      setTimeout(() => {
+        btn.classList.remove("catching"); // 애니메이션 제거
+        addToMyDex(pokemon); // 실제 마이덱스 저장
+        renderMyDex(); // UI 갱신
+
+        MiniAlert.fire({
+          title: "잡았다!🎉",
+          message: `${pokemon.name}은(는) 도감에 데이터가 전송되었다.`,
+        });
+      }, 3000);
     }
 
     // ❌ 마이덱스 삭제 버튼 클릭
@@ -118,10 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${pokemon.sprites.front_default}" alt="${
       pokemon.koreanName
     }" />
+
         <p>키: ${pokemon.height / 10} m</p>
         <p>몸무게: ${pokemon.weight / 10} kg</p>
         <p>타입: ${pokemon.koreanTypes.join(", ")}</p>
         <p>능력치:</p>
+    
         <ul>
           ${pokemon.koreanStats
             .map((s) => `<li>${s.name}: ${s.value}</li>`)

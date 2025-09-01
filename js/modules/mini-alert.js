@@ -1,5 +1,5 @@
 export default class MiniAlert {
-  constructor({ title, message, closeBackdrop = true, onClose }) {
+  constructor({ title, message, closeBackdrop = true, onClose, duration }) {
     this.closeBackdrop = closeBackdrop;
     this.onClose = onClose;
 
@@ -9,7 +9,7 @@ export default class MiniAlert {
 
     // 모달 생성
     this.modal = document.createElement("div");
-    this.modal.classList.add("mini-alert"); // CSS에서 스타일 적용
+    this.modal.classList.add("mini-alert");
 
     this.modal.innerHTML = `
       <h2 class="mini-alert-title" style="display:${
@@ -32,6 +32,11 @@ export default class MiniAlert {
     });
 
     this.modal.addEventListener("click", (e) => e.stopPropagation());
+
+    // ⏱ 자동 닫기 (duration 옵션 있을 경우)
+    if (duration) {
+      setTimeout(() => this.close(), duration);
+    }
   }
 
   close() {
